@@ -14,8 +14,6 @@ export class MessagePage implements OnInit {
 
   ngOnInit() {
   }
-back(){
-  
-}
+
 
 }
