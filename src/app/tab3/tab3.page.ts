@@ -1,7 +1,6 @@
 import { Component} from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
-
-
+import { Router } from '@angular/router';
 
 
 
@@ -13,16 +12,14 @@ import { AlertController, ToastController } from '@ionic/angular';
 export class Tab3Page {
 
   contactlist  = [
-    {id: 1, name: 'Ken Bryan Dipa', email: 'Kenlauxzs@gmail.com'  ,number: '09123124216'},
-    {id: 2, name: 'Kenlauxzs', email: 'Kenlauxzs@gmail.com'  ,number: '09164345316'},
-    {id: 3, name: 'Test123', email: 'Test123@gmail.com'  ,number: '09162132354'},
-   
+    {id: 1, name: 'Test 1', email: 'Test1@gmail.com', number: '09153557313'},
+    {id: 2, name: 'Test 2', email: 'Test2@gmail.com', number: '09153557314'},
+    {id: 3, name: 'Test 3', email: 'Test3@gmail.com', number: '09153557315'},
   ]
 
 
 
-
-  constructor(public alertController: AlertController, public toastController: ToastController ) {
+  constructor(public alertController: AlertController, public toastController: ToastController, private route: Router) {
   }
   async  confirmation(index: number) {
     const alert = await this.alertController.create({
@@ -95,12 +92,13 @@ export class Tab3Page {
                 if(data.email.length == 0){
                   data.email = "none"
                 }
-              this.contactlist.push({
-                id: data.id,
-                name: data.name,
-                email: data.email,
-                number: data.number
-              });
+                this.contactlist.push({
+                  id: data.id,
+                  name: data.name,
+                  email: data.email,
+                  number: data.number
+                });
+            
               this.showErrorToast('<ion-text color="danger"><b>Added</b></ion-text>');
             }
             }
@@ -128,9 +126,14 @@ export class Tab3Page {
 
     (await toast).present();
   }
+  async sendMessage(){ 
+    this.route.navigate(['message']);
+  }
+
 
 
 }
+
 
 
 
